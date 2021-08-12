@@ -1,0 +1,45 @@
+type Query {
+  login(
+      email: String!,
+      password: String!
+    ): AuthenticateResponse!
+}
+
+type Mutation {
+  register(
+    name: String!,
+    email: String!,
+    password: String!
+  ): AuthenticateResponse!
+}
+
+type AuthenticateResponse {
+  token: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+}
+
+type UserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+type UserResponse {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+extend type Query {
+  getUsers: [UserResponse!]!
+}
+
+extend type Query {
+  getUser(id: ID!): UserResponse!
+}
